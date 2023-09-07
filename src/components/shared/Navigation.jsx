@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../assets/react.svg';
+import { userLoggedOut } from '../../features/auth/authSlice';
+import UseAuth from '../../hooks/UseAuth';
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
+  const isLoggedIn = UseAuth();
+  console.log(isLoggedIn);
 
+  const logOut = () => {
+    localStorage.removeItem('auth');
+    userLoggedOut();
+  };
   return (
     <nav id="home" className="w-full bg-purple-100 py-5">
       <div className="justify-between px-4 lg:mr-20 lg:max-w-7xl md:items-center md:flex md:px-8">
@@ -67,8 +75,8 @@ export default function NavBar() {
               </li>
 
               <li className="text-gray-600 hover:text-black-600">
-                <Link smooth to="#about">
-                  <p>About</p>
+                <Link smooth to="/menu">
+                  <p>Menu</p>
                 </Link>
               </li>
               <li className="text-gray-600 hover:text-black-600">
@@ -76,11 +84,24 @@ export default function NavBar() {
                   <p>Signup</p>
                 </Link>
               </li>
-              <li className="text-gray-600 hover:text-black-600">
-                <Link smooth to="/login">
-                  <p>Login</p>
-                </Link>
-              </li>
+              {!isLoggedIn && (
+                <li className="text-gray-600 hover:text-black-600">
+                  <Link smooth to="/login">
+                    <p>Login</p>
+                  </Link>
+                </li>
+              )}
+
+              {isLoggedIn && (
+                <li
+                  onClick={logOut}
+                  className="text-gray-600 hover:text-black-600"
+                >
+                  <Link smooth to="/login">
+                    <p>Logout</p>
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
