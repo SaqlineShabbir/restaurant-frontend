@@ -14,7 +14,7 @@ export const authApi = apiSlice.injectEndpoints({
           const result = await queryFulfilled;
           dispatch(
             userLoggedIn({
-              user: result.data,
+              user: result?.data,
             })
           );
         } catch (error) {}
@@ -31,9 +31,11 @@ export const authApi = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
+
+          console.log('result from redux', result);
           dispatch(
             userLoggedIn({
-              user: result.data,
+              user: result?.data?.data,
             })
           );
         } catch (error) {}

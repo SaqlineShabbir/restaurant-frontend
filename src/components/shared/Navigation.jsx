@@ -61,7 +61,7 @@ export default function NavBar() {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-gray-600 hover:text-black-600">
-                <Link smooth to="#home">
+                <Link smooth to="/">
                   <p>Home</p>
                 </Link>
               </li>
@@ -72,13 +72,13 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="text-gray-600 hover:text-black-600">
-                <Link smooth to="#projects">
-                  <p>Projects</p>
+                <Link smooth to="/signup">
+                  <p>Signup</p>
                 </Link>
               </li>
               <li className="text-gray-600 hover:text-black-600">
-                <Link smooth to="#contact">
-                  <p>Contact</p>
+                <Link smooth to="/login">
+                  <p>Login</p>
                 </Link>
               </li>
             </ul>
