@@ -78,6 +78,11 @@ export default function NavBar() {
               </li>
 
               <li className="text-gray-600 hover:text-black-600">
+                <Link smooth to="/about-us">
+                  <p>About us</p>
+                </Link>
+              </li>
+              <li className="text-gray-600 hover:text-black-600">
                 <Link smooth to="/menu">
                   <p>Menu</p>
                 </Link>

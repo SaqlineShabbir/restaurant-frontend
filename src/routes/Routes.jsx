@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import PrivateRoute from '../components/secureRoutes/PrivateRoute';
 import Main from '../layout/Main';
+import AboutUs from '../pages/AboutUs';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Menu from '../pages/Menu';
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             <Menu></Menu>
           </PrivateRoute>
         ),
+      },
+      {
+        path: '/about-us',
+        element: <AboutUs></AboutUs>,
       },
     ],
   },
