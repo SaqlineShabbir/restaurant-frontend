@@ -17,9 +17,6 @@ export default function Register() {
     useRegisterMutation();
 
   const navigate = useNavigate();
-  console.log(data);
-  console.log(responseError);
-  console.log(data?.status);
 
   useEffect(() => {
     if (responseError?.data) {

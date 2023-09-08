@@ -1,7 +1,11 @@
+import OurChefs from '../components/Home/OurChefs';
+
 const Home = () => {
   return (
     <div>
-      <p className="  flex mx-auto  my-auto pt-10">This is Home</p>
+      {/* //all components here */}
+
+      <OurChefs />
     </div>
   );
 };

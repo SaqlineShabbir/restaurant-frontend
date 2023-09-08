@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import img from '../../assets/react.svg';
 import { userLoggedOut } from '../../features/auth/authSlice';
@@ -6,11 +7,12 @@ import UseAuth from '../../hooks/UseAuth';
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const isLoggedIn = UseAuth();
-  console.log(isLoggedIn);
+  const dispatch = useDispatch();
 
+  //  logout functionality here
   const logOut = () => {
     localStorage.removeItem('auth');
-    userLoggedOut();
+    dispatch(userLoggedOut());
   };
   return (
     <nav id="home" className="w-full bg-purple-100 py-5">
@@ -62,6 +64,7 @@ export default function NavBar() {
           </div>
         </div>
         <div>
+          {/* nav links */}
           <div
             className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
               navbar ? 'block' : 'hidden'

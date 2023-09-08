@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/react.svg';
 import { useLoginMutation } from '../features/auth/authApi';
 
@@ -8,22 +8,25 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  console.log(email, password);
-
+  //from redux
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
 
   const navigate = useNavigate();
+  const location = useLocation();
+  //check where user came from
+  const form = location.state?.form?.pathname || '/';
+  console.log(form);
 
   useEffect(() => {
     if (responseError?.data) {
       setError(responseError?.data?.message);
     }
     if (data?.status === 'success') {
-      navigate('/');
+      navigate(form, { replace: true });
     }
   }, [data, responseError, navigate]);
-  console.log(data);
 
+  //submit data
   const handleSubmit = async (e) => {
     e.preventDefault();
 
