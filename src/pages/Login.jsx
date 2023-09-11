@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/react.svg';
+import authImg from '../assets/svg/auth-removebg-preview.png';
 import { useLoginMutation } from '../features/auth/authApi';
 
 export default function Login() {
@@ -55,9 +56,12 @@ export default function Login() {
   };
 
   return (
-    <div className="grid place-items-center h-screen bg-[#F9FAFB">
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
+    <div className="grid place-items-center h-screen dark:bg-[#0a0c1c] dark:text-white">
+      <div className="min-h-full lg:flex  py-12 px-4 sm:px-6 lg:px-8 ">
+        <div>
+          <img className="lg:h-[550px] lg:w-[700px]" src={authImg} alt="" />
+        </div>
+        <div className="max-w-md w-full space-y-5 lg:pt-[140px] lg:ml-20">
           <div>
             <Link to="/">
               <img
@@ -66,11 +70,11 @@ export default function Login() {
                 alt="Learn with sumit"
               />
             </Link>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold ">
               Sign in to your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
@@ -88,7 +92,7 @@ export default function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div>
+              <div className="pt-5">
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
@@ -120,7 +124,7 @@ export default function Login() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                 disabled={isLoading}
               >
                 Sign in

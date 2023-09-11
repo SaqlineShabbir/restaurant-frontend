@@ -1,8 +1,9 @@
 import comma from '../assets/svg/double-removebg-preview.png';
 import aboutimg from '../assets/workers-photo/about-photo.avif';
+import FoodGallery from '../components/about-us/FoodGallery';
 const AboutUs = () => {
   return (
-    <div className="about-us-main">
+    <div className="about-us-main  dark:bg-[#0a0c1c] dark:text-gray-100">
       <div className="lg:px-[150px]">
         <div className="lg:px-[200px] px-10 py-10">
           <p className="text-4xl  py-4 font-bold">About X Restaurant</p>
@@ -43,13 +44,14 @@ const AboutUs = () => {
           </div>
         </div>
         {/* // */}
-        <div className="bg-gray-100 py-20 flex justify-center">
+        <div className="bg-gray-100   dark:bg-[#262a4980]  py-20 flex justify-center">
           <img className="lg:h-20 h-10" src={comma} alt="" />
           <p className="text-center  lg:text-3xl text-xl pt-5">
             A recipe has no Soul. You as the cook, must bring soul to the
             recipe.
           </p>
         </div>
+        <FoodGallery />
       </div>
     </div>
   );

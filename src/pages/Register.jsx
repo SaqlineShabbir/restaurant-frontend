@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logoImage from '../assets/react.svg';
+import authImg from '../assets/svg/auth-removebg-preview.png';
 import { useRegisterMutation } from '../features/auth/authApi';
 
 export default function Register() {
@@ -44,9 +45,12 @@ export default function Register() {
   };
 
   return (
-    <div className="grid place-items-center h-screen bg-[#F9FAFB">
-      <div className="min-h-full flex items-center justify-center py-7 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8">
+    <div className="grid place-items-center lg:place-items-between h-screen   dark:bg-[#0a0c1c] dark:text-gray-100">
+      <div className="min-h-full lg:flex justify-center  px-4 sm:px-6 lg:px-8 py-20 lg:space-x-[100px]">
+        <div>
+          <img className="lg:h-[550px] lg:w-[700px]" src={authImg} alt="" />
+        </div>
+        <div className="max-w-md w-full space-y-8 space-x-10   lg:mt-20">
           <div>
             <Link to="/">
               <img
@@ -55,7 +59,7 @@ export default function Register() {
                 alt="Learn with sumit"
               />
             </Link>
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+            <h2 className="mt-6 text-center text-3xl font-extrabold ">
               Create your account
             </h2>
           </div>
@@ -141,10 +145,7 @@ export default function Register() {
                   required
                   onChange={(e) => setAgreed(e.target.checked)}
                 />
-                <label
-                  htmlFor="accept-terms"
-                  className="ml-2 block text-sm text-gray-900"
-                >
+                <label htmlFor="accept-terms" className="ml-2 block text-sm ">
                   Agreed with the terms and condition
                 </label>
               </div>
@@ -153,7 +154,7 @@ export default function Register() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                 disabled={isLoading}
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>

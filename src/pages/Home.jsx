@@ -1,11 +1,11 @@
-import OurChefs from '../components/Home/OurChefs';
+import WhyChooseUs from '../components/Home/WhyChooseUs';
 
 const Home = () => {
   return (
     <div>
       {/* //all components here */}
-
-      <OurChefs />
+      <WhyChooseUs></WhyChooseUs>
+      {/* <OurChefs /> */}
     </div>
   );
 };
