@@ -1,11 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
-import PrivateRoute from '../components/secureRoutes/PrivateRoute';
+import OrderCard from '../components/order/OrderCard';
+import Dashboard from '../layout/Dashboard';
 import Main from '../layout/Main';
 import AboutUs from '../pages/AboutUs';
+import Cart from '../pages/Cart';
 import Home from '../pages/Home';
 import Jobs from '../pages/Jobs';
 import Login from '../pages/Login';
 import Menu from '../pages/Menu';
+import MenuDetail from '../pages/MenuDetail';
 import Register from '../pages/Register';
 
 export const router = createBrowserRouter([
@@ -27,11 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/menu',
-        element: (
-          <PrivateRoute>
-            <Menu></Menu>
-          </PrivateRoute>
-        ),
+        element: <Menu></Menu>,
       },
       {
         path: '/about-us',
@@ -40,6 +39,24 @@ export const router = createBrowserRouter([
       {
         path: '/jobs',
         element: <Jobs></Jobs>,
+      },
+      {
+        path: '/cart',
+        element: <Cart></Cart>,
+      },
+      {
+        path: '/menu/:menuId',
+        element: <MenuDetail></MenuDetail>,
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: 'cart',
+        element: <OrderCard></OrderCard>,
       },
     ],
   },

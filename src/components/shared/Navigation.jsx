@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import img from '../../assets/react.svg';
+import img from '../../assets/logo/Restaurant-logo-removebg-preview.png';
 import { userLoggedOut } from '../../features/auth/authSlice';
 import UseAuth from '../../hooks/UseAuth';
+import useAuthCheck from '../../hooks/UseAuthCheck';
 export default function NavBar() {
   const [navbar, setNavbar] = useState(false);
   const isLoggedIn = UseAuth();
+  const authChecked = useAuthCheck();
   const dispatch = useDispatch();
   const [theme, setTheme] = useState('light');
+  console.log(authChecked)
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -39,8 +42,8 @@ export default function NavBar() {
         <div>
           <div className="flex items-center justify-between   md:block lg:mr-20">
             <p className="flex">
-              <img className="w-8" src={img} alt="" />
-              <h2 className="text-lg font-bold mt-1 ">Restaurant</h2>
+              <img className="w-14" src={img} alt="" />
+              <h2 className="text-lg font-bold mt-4 ">Restaurant X</h2>
             </p>
             <div className="md:hidden">
               <button
@@ -88,43 +91,46 @@ export default function NavBar() {
             }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 dark:text-white">
-              <li className=" hover:text-black-600 focus:border-gray-100">
+              <li className=" hover:text-black-600 focus:border-gray-100 cursor-pointer">
                 <Link smooth to="/">
                   <p>Home</p>
                 </Link>
               </li>
 
-              <li className=" hover:text-black-600">
+              <li className=" hover:text-black-600 cursor-pointer">
                 <Link smooth to="/about-us">
                   <p>About us</p>
                 </Link>
               </li>
 
-              <li className=" hover:text-black-600">
+              <li className=" hover:text-black-600 cursor-pointer">
                 <Link smooth to="/menu">
                   <p>Menu</p>
                 </Link>
               </li>
-              <li className=" hover:text-black-600">
+              {!authChecked&&<li className=" hover:text-black-600 cursor-pointer">
                 <Link smooth to="/signup">
                   <p>Signup</p>
                 </Link>
-              </li>
-              {!isLoggedIn && (
-                <li className=" hover:text-black-600">
+              </li>}
+              {!authChecked && (
+                <li className=" hover:text-black-600  cursor-pointer">
                   <Link smooth to="/login">
                     <p>Login</p>
                   </Link>
                 </li>
               )}
-              <li className=" hover:text-black-600">
+              <li className=" hover:text-black-600  cursor-pointer">
                 <Link smooth to="/jobs">
                   <p>Jobs</p>
                 </Link>
               </li>
 
-              {isLoggedIn && (
-                <li onClick={logOut} className=" hover:text-black-600">
+              {authChecked && (
+                <li
+                  onClick={logOut}
+                  className=" hover:text-black-600 cursor-pointer"
+                >
                   <Link smooth to="/login">
                     <p>Logout</p>
                   </Link>
