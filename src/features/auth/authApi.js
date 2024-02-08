@@ -3,6 +3,7 @@ import { userLoggedIn } from './authSlice';
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    //register
     register: builder.mutation({
       query: (data) => ({
         url: '/signup',
@@ -26,10 +27,10 @@ export const authApi = apiSlice.injectEndpoints({
               user: result?.data.data,
             })
           );
-        } catch (error) {}
+        } catch (error) { }
       },
     }),
-
+    //login
     login: builder.mutation({
       query: (data) => ({
         url: '/login',
@@ -54,7 +55,7 @@ export const authApi = apiSlice.injectEndpoints({
               token: result?.data?.token,
             })
           );
-        } catch (error) {}
+        } catch (error) { }
       },
     }),
   }),

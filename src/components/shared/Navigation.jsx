@@ -11,7 +11,7 @@ export default function NavBar() {
   const authChecked = useAuthCheck();
   const dispatch = useDispatch();
   const [theme, setTheme] = useState('light');
-  console.log(authChecked)
+
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -32,15 +32,16 @@ export default function NavBar() {
   const logOut = () => {
     localStorage.removeItem('auth');
     dispatch(userLoggedOut());
+
   };
   return (
     <nav
       id="home"
       className="w-full  dark:text-white dark:bg-[#0a0c1c] py-5 border-b-[1px]"
     >
-      <div className="justify-between px-4 lg:mr-20 lg:max-w-7xl md:items-center md:flex md:px-8 ">
+      <div className="justify-between px-4   md:items-center md:flex md:px-20 ">
         <div>
-          <div className="flex items-center justify-between   md:block lg:mr-20">
+          <div className="flex items-center justify-between   md:block ">
             <p className="flex">
               <img className="w-14" src={img} alt="" />
               <h2 className="text-lg font-bold mt-4 ">Restaurant X</h2>
@@ -86,9 +87,8 @@ export default function NavBar() {
         <div>
           {/* nav links */}
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-              navbar ? 'block' : 'hidden'
-            }`}
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
+              }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 dark:text-white">
               <li className=" hover:text-black-600 focus:border-gray-100 cursor-pointer">
@@ -108,12 +108,12 @@ export default function NavBar() {
                   <p>Menu</p>
                 </Link>
               </li>
-              {!authChecked&&<li className=" hover:text-black-600 cursor-pointer">
+              {!isLoggedIn && <li className=" hover:text-black-600 cursor-pointer">
                 <Link smooth to="/signup">
                   <p>Signup</p>
                 </Link>
               </li>}
-              {!authChecked && (
+              {!isLoggedIn && (
                 <li className=" hover:text-black-600  cursor-pointer">
                   <Link smooth to="/login">
                     <p>Login</p>
@@ -126,7 +126,7 @@ export default function NavBar() {
                 </Link>
               </li>
 
-              {authChecked && (
+              {isLoggedIn && (
                 <li
                   onClick={logOut}
                   className=" hover:text-black-600 cursor-pointer"
@@ -150,11 +150,10 @@ export default function NavBar() {
                   <div className="shadow-card flex h-[46px] w-[82px] items-center justify-center rounded-md">
                     {isChecked && (
                       <span
-                        className={`flex h-9 w-9 items-center justify-center rounded text-black dark:text-white  ${
-                          !isChecked
-                            ? 'bg-blue-200 text-black'
-                            : 'text-body-color'
-                        }`}
+                        className={`flex h-9 w-9 items-center justify-center rounded text-black dark:text-white  ${!isChecked
+                          ? 'bg-blue-200 text-black'
+                          : 'text-body-color'
+                          }`}
                       >
                         <svg
                           width="16"
@@ -182,11 +181,10 @@ export default function NavBar() {
 
                     {!isChecked && (
                       <span
-                        className={`flex h-9 w-9 items-center justify-center rounded ${
-                          isChecked
-                            ? 'bg-blue-200 text-black'
-                            : 'text-body-color'
-                        }`}
+                        className={`flex h-9 w-9 items-center justify-center rounded ${isChecked
+                          ? 'bg-blue-200 text-black'
+                          : 'text-body-color'
+                          }`}
                       >
                         <svg
                           width="16"
@@ -205,7 +203,10 @@ export default function NavBar() {
                       </span>
                     )}
                   </div>
+
                 </label>
+                <img className="w-12  border-orange-500 border-2 rounded-full" src={img} alt="" />
+
               </>
             </ul>
           </div>

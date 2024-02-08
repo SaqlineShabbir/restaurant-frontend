@@ -52,13 +52,7 @@ export default function Register() {
         </div>
         <div className="max-w-md w-full space-y-8 space-x-10   lg:mt-20">
           <div>
-            <Link to="/">
-              <img
-                className="mx-auto h-12 w-auto"
-                src={logoImage}
-                alt="Learn with sumit"
-              />
-            </Link>
+
             <h2 className="mt-6 text-center text-3xl font-extrabold ">
               Create your account
             </h2>

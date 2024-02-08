@@ -32,13 +32,29 @@ const Cart = () => {
   }
 
   if (!isLoading && !isError && orders?.data?.length > 0) {
-    content = orders?.data.map((order) => (
-      <OrderCard key={order._id} order={order}></OrderCard>
-    ));
+    content = <div className="lg:w-[870px]">
+      <table className="min-w-full bg-white rounded-xl shadow-md overflow-hidden">
+        <thead>
+          <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+            <th className="py-3 px-6 text-left">Product</th>
+            <th className="py-3 px-6 text-left">Unit Price</th>
+            <th className="py-3 px-6 text-left">Quantity</th>
+            <th className="py-3 px-6 text-left">Total</th>
+            <th className="py-3 px-6 text-left">Cancel</th>
+          </tr>
+        </thead>
+        <tbody className="text-gray-600 text-sm font-light">
+          {orders?.data.map((order) => (
+            <OrderCard key={order._id} order={order}></OrderCard>
+          ))}
+          {/* <!-- You can replicate the <tr>...</tr> for more rows --> */}
+        </tbody>
+      </table>
+    </div>
   }
 
   return (
-    <div className="grid  grid-cols-1 place-items-center lg:px-[250px] lg:py-[100px]  py-20 gap-5">
+    <div className="grid  grid-cols-1 place-items-center lg:px-[250px] lg:py-[0px]  py-20 gap-5 min-h-[70vh]">
       {/* //menu card */}
       {content}
     </div>
