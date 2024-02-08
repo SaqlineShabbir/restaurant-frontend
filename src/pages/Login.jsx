@@ -4,6 +4,7 @@ import logoImage from '../assets/react.svg';
 import authImg from '../assets/svg/auth-removebg-preview.png';
 import { useLoginMutation } from '../features/auth/authApi';
 
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ export default function Login() {
   const location = useLocation();
   //check where user came from
   const form = location.state?.form?.pathname || '/';
-  console.log(form);
+  // console.log(form);
 
   useEffect(() => {
     if (responseError?.data) {
@@ -24,6 +25,8 @@ export default function Login() {
     }
     if (data?.status === 'success') {
       navigate(form, { replace: true });
+
+
     }
   }, [data, responseError, navigate]);
 
@@ -37,6 +40,7 @@ export default function Login() {
       email,
       password,
     });
+
 
     // fetch('http://localhost:5000/api/login', {
     //   method: 'POST',

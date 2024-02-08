@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import Footer from '../components/shared/Footer';
 import Navigation from '../components/shared/Navigation';
 // import useAuthCheck from '../hooks/UseAuthCheck';
 const Main = () => {
@@ -6,6 +7,7 @@ const Main = () => {
     <div>
       <Navigation></Navigation>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };
