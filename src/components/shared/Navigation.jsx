@@ -203,7 +203,7 @@ export default function NavBar() {
                       </span>
                     )}
                   </div>
-
+                  {/* // */}
                 </label>
                 <img className="w-12  border-orange-500 border-2 rounded-full" src={img} alt="" />
 
