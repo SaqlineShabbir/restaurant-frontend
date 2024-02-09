@@ -1,10 +1,10 @@
 import React from 'react';
-import img from '../../assets/logo/unn.JPG'
+import img from '../../assets/logo/unn.jpg'
 import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
-    <div style={{backgroundImage: `url(${img})`,backgroundBlendMode:'hard-light' }}  className="bg-blend-darken relative h-96 md:h-[80vh] overflow-hidden bg-cover bg-center">
+    <div style={{ backgroundImage: `url(${img})`, backgroundBlendMode: 'hard-light' }} className="bg-blend-darken relative h-96 md:h-[80vh] overflow-hidden bg-cover bg-center">
       {/* Background Image */}
       <div
         className="absolute inset-0  opacity-50"
