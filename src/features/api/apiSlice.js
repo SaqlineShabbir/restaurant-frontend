@@ -7,7 +7,7 @@ export const apiSlice = createApi({
 
     prepareHeaders: async (headers, { getState, endpoint }) => {
       const token = getState()?.auth?.token;
-
+      //if token 
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }
