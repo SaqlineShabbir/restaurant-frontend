@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import img from '../../assets/logo/Restaurant-logo-removebg-preview.png';
 import { userLoggedOut } from '../../features/auth/authSlice';
@@ -11,6 +11,7 @@ export default function NavBar() {
   const authChecked = useAuthCheck();
   const dispatch = useDispatch();
   const [theme, setTheme] = useState('light');
+  const auth = useSelector((state) => state.auth);
 
 
   useEffect(() => {
@@ -108,6 +109,11 @@ export default function NavBar() {
                   <p>Menu</p>
                 </Link>
               </li>
+              {isLoggedIn && <li className=" hover:text-black-600 cursor-pointer">
+                <Link smooth to="/dashboard">
+                  <p>dashboard</p>
+                </Link>
+              </li>}
               {!isLoggedIn && <li className=" hover:text-black-600 cursor-pointer">
                 <Link smooth to="/signup">
                   <p>Signup</p>
@@ -205,8 +211,8 @@ export default function NavBar() {
                   </div>
                   {/* // */}
                 </label>
-                <img className="w-12  border-orange-500 border-2 rounded-full" src={img} alt="" />
 
+                <div className=""> <p className='font-bold text-xl py-2 border-orange-500 border-2 rounded-full px-4' >{auth?.user?.name.slice(0, 1)}</p></div>
               </>
             </ul>
           </div>

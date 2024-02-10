@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import OrderCard from '../components/order/OrderCard';
+
 import Dashboard from '../layout/Dashboard';
 import Main from '../layout/Main';
 import AboutUs from '../pages/AboutUs';
@@ -10,6 +10,8 @@ import Login from '../pages/Login';
 import Menu from '../pages/Menu';
 import MenuDetail from '../pages/MenuDetail';
 import Register from '../pages/Register';
+import AddMenu from '../pages/dashboard/AddMenu';
+
 
 export const router = createBrowserRouter([
   {
@@ -56,7 +58,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'cart',
-        element: <OrderCard></OrderCard>,
+        element: <Cart></Cart>,
+      },
+      {
+        path: 'add-menu',
+        element: <AddMenu></AddMenu>,
       },
     ],
   },

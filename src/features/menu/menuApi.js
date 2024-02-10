@@ -14,6 +14,7 @@ export const menuApi = apiSlice.injectEndpoints({
     postMenu: builder.mutation({
       query: (data) => ({
         url: '/menu',
+        headers: {},
         method: 'POST',
         body: data,
       }),
@@ -27,10 +28,10 @@ export const menuApi = apiSlice.injectEndpoints({
           //       user: result?.data.data,
           //     })
           //   );
-        } catch (error) {}
+        } catch (error) { }
       },
     }),
   }),
 });
 
-export const { useGetMenusQuery, useGetMenuByIdQuery } = menuApi;
+export const { useGetMenusQuery, useGetMenuByIdQuery, usePostMenuMutation } = menuApi;
