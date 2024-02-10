@@ -15,7 +15,7 @@ import AddMenu from '../pages/dashboard/AddMenu';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: 'https://restaurant-sage-theta.vercel.app/',
     element: <Main></Main>,
     children: [
       {
@@ -53,15 +53,15 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: 'dashboard',
+    path: '/dashboard',
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: 'cart',
+        path: '/cart',
         element: <Cart></Cart>,
       },
       {
-        path: 'add-menu',
+        path: '/add-menu',
         element: <AddMenu></AddMenu>,
       },
     ],
