@@ -3,6 +3,6 @@ import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/restaurant-sage-theta/', // Adjust this based on your deployment path
+  base: 'https://restaurant-sage-theta.vercel.app/', // Adjust this based on your deployment path
   plugins: [react()],
 });
