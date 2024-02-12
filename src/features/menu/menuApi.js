@@ -14,7 +14,7 @@ export const menuApi = apiSlice.injectEndpoints({
     postMenu: builder.mutation({
       query: (formData) => ({
         url: '/menu',
-        headers: {},
+        headers: { 'Content-Type': 'multipart/form-data' },
         method: 'POST',
         body: formData,
       }),
