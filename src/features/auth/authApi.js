@@ -58,7 +58,17 @@ export const authApi = apiSlice.injectEndpoints({
         } catch (error) { }
       },
     }),
+    makeAdmin: builder.mutation({
+      query: (data) => ({
+        url: '/make-admin',
+        method: 'PATCH',
+        body: data,
+      }),
+
+
+    }),
+
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useMakeAdminMutation } = authApi;

@@ -5,6 +5,7 @@ export const menuApi = apiSlice.injectEndpoints({
     //from here
     getMenus: builder.query({
       query: () => '/menu',
+      providesTags: ['Menus'],
     }),
 
     getMenuById: builder.query({
@@ -14,24 +15,21 @@ export const menuApi = apiSlice.injectEndpoints({
     postMenu: builder.mutation({
       query: (formData) => ({
         url: '/menu',
-        headers: { 'Content-Type': 'multipart/form-data' },
         method: 'POST',
         body: formData,
       }),
-      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
-        try {
-          const result = await queryFulfilled;
-
-          //   dispatch(
-          //     userLoggedIn({
-          //       token: result.data.token,
-          //       user: result?.data.data,
-          //     })
-          //   );
-        } catch (error) { }
-      },
+      invalidatesTags: ['Menus'],
     }),
+
+    deleteMenu: builder.mutation({
+      query: (id) => ({
+        url: `/menu/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['Menus'],
+    }),
+
   }),
 });
 
-export const { useGetMenusQuery, useGetMenuByIdQuery, usePostMenuMutation } = menuApi;
+export const { useGetMenusQuery, useGetMenuByIdQuery, usePostMenuMutation, useDeleteMenuMutation } = menuApi;

@@ -35,27 +35,25 @@ const MenuDetail = () => {
   }
 
   if (data?.status === 'success') {
-    navigate('/cart');
+    navigate('/dashboard/cart');
     alert('successfully ordered');
   }
 
-  const total = quantity * menu?.data.price;
-
+  const total = quantity * menu?.data?.price;
+  console.log('datttaa', menu?.data)
   const handleOrder = () => {
-    if (menu.data.quantity < 1) {
-      postOrder({
-        name: menu.data.name,
-        description: menu.data.description,
-        price: menu.data.price,
-        total: total,
-        photo: menu.data.photo,
-        category: menu.data.category,
-        quantity: quantity,
-        status: menu.data.status,
-      });
-    } else {
-      alert('Please select edit');
-    }
+
+    postOrder({
+      name: menu.data.name,
+      description: menu.data.description,
+      price: menu.data.price,
+      total: total,
+      photo: menu.data.photo,
+      category: menu.data.category,
+      quantity: quantity,
+      status: menu.data.status,
+    });
+
   };
 
   // handle quantity
@@ -134,17 +132,15 @@ const MenuDetail = () => {
         {/* //here */}
         <div className="space-x-10  py-5">
           <button
-            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${
-              active === 'description' && ' border-b-2 border-b-orange-400'
-            }`}
+            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${active === 'description' && ' border-b-2 border-b-orange-400'
+              }`}
             onClick={() => setActive('description')}
           >
             Description
           </button>
           <button
-            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${
-              active === 'reviews' && ' border-b-2 border-b-orange-400'
-            }`}
+            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${active === 'reviews' && ' border-b-2 border-b-orange-400'
+              }`}
             onClick={() => setActive('reviews')}
           >
             Reviews

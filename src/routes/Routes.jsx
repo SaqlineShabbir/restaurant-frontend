@@ -11,6 +11,10 @@ import Menu from '../pages/Menu';
 import MenuDetail from '../pages/MenuDetail';
 import Register from '../pages/Register';
 import AddMenu from '../pages/dashboard/AddMenu';
+import UserProfile from '../pages/dashboard/UserProfile';
+import MakeAdmin from '../pages/dashboard/MakeAdmin';
+import UpdateProfile from '../pages/dashboard/UpdateProfile';
+import ManageMenu from '../pages/dashboard/ManageMenu';
 
 
 export const router = createBrowserRouter([
@@ -57,12 +61,28 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
+        path: '/dashboard/',
+        element: <UserProfile></UserProfile>,
+      },
+      {
         path: '/dashboard/cart',
         element: <Cart></Cart>,
       },
       {
         path: '/dashboard/add-menu',
         element: <AddMenu></AddMenu>,
+      },
+      {
+        path: '/dashboard/update-profile',
+        element: <UpdateProfile></UpdateProfile>
+      },
+      {
+        path: 'dashboard/manage-menus',
+        element: <ManageMenu></ManageMenu>
+      },
+      {
+        path: 'dashboard/make-admin',
+        element: <MakeAdmin></MakeAdmin>,
       },
     ],
   },

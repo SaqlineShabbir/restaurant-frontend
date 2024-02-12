@@ -14,10 +14,11 @@ const AddMenu = () => {
     formData.append('name', name)
     formData.append('description', description)
     formData.append('price', price)
+    formData.append('photo', photo)
     formData.append('category', category)
     formData.append('status', "in-stock")
-    formData.append('photo', photo)
-    formData.append('quantity', 30)
+    formData.append('quantity', 1)
+
 
     // add to menu
     const [
@@ -27,6 +28,7 @@ const AddMenu = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        console.log(formData)
         postMenu(formData)
     }
     console.log(data)
@@ -34,7 +36,7 @@ const AddMenu = () => {
         console.log(postMenuError)
     }
     return (
-        <main>
+        <main className='flex  justify-center'>
             <section className='py-10'>
                 <div className='flex justify-start items-center'>
                     <form onSubmit={handleSubmit} className='bg-green-50 w-[500px] p-10 shadow space-y-4 rounded'>
