@@ -42,7 +42,7 @@ export default function Login() {
     });
 
 
-    // fetch('https://restaurant-backend-rpyy.onrender.com/api/login', {
+    // fetch('https://clumsy-toad-polo-shirt.cyclic.app/api/login', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
     //   body: JSON.stringify({

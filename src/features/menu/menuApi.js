@@ -12,11 +12,11 @@ export const menuApi = apiSlice.injectEndpoints({
     }),
 
     postMenu: builder.mutation({
-      query: (data) => ({
+      query: (formData) => ({
         url: '/menu',
         headers: {},
         method: 'POST',
-        body: data,
+        body: formData,
       }),
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
