@@ -2,7 +2,7 @@ import React from 'react';
 import { useDeleteOrderMutation } from '../../features/order/orderApi';
 import { IoMdClose } from 'react-icons/io';
 
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order, refetch }) => {
   const [deleteOrder, { isLoading, isSuccess, isError }] =
     useDeleteOrderMutation();
 
@@ -15,9 +15,14 @@ const OrderCard = ({ order }) => {
   //   },
   // ] = useUpdateOrderMutation();
 
+
   const handleDeleteOrder = () => {
     deleteOrder(order?._id);
   };
+
+  if (isSuccess) {
+    refetch()
+  }
 
   return (
 

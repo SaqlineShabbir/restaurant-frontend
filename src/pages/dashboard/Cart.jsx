@@ -13,6 +13,7 @@ const Cart = () => {
         data: orders,
         isLoading,
         isError,
+        refetch
     } = useGetOrdersByUserIdQuery(userid);
 
     let content = null;
@@ -47,7 +48,7 @@ const Cart = () => {
                 </thead>
                 <tbody className="text-gray-600 text-sm font-light">
                     {orders?.data.map((order) => (
-                        <OrderCard key={order._id} order={order}></OrderCard>
+                        <OrderCard key={order._id} order={order} refetch={refetch}></OrderCard>
                     ))}
                     {/* <!-- You can replicate the <tr>...</tr> for more rows --> */}
                 </tbody>

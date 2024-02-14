@@ -5,13 +5,13 @@ export const orderApi = apiSlice.injectEndpoints({
     //from here
     getOrders: builder.query({
       query: (id) => `/order`,
-      keepUnusedDataFor: 600,
+
       providesTags: ['Orders'],
     }),
     getOrdersByUserId: builder.query({
       query: (id) => `/order/${id}`,
-      keepUnusedDataFor: 600,
       providesTags: ['Orders'],
+
     }),
 
     postOrder: builder.mutation({
@@ -29,6 +29,7 @@ export const orderApi = apiSlice.injectEndpoints({
         method: 'DELETE',
       }),
       invalidatesTags: ['Orders'],
+
     }),
     updateOrder: builder.mutation({
       query: ({ id, data }) => ({
