@@ -37,7 +37,7 @@ const Review = ({ menu }) => {
     isError,
   } = useGetReviewsByMenuIdQuery(menu?._id);
 
-  console.log(reviews?.data);
+
 
   let content = null;
   if (isLoading) {

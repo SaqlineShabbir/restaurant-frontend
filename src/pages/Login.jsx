@@ -17,7 +17,7 @@ export default function Login() {
   const location = useLocation();
   //check where user came from
   const form = location.state?.form?.pathname || '/';
-  // console.log(form);
+
 
   useEffect(() => {
     if (responseError?.data) {
@@ -42,21 +42,6 @@ export default function Login() {
     });
 
 
-    // fetch('https://restaurant-backend-rpyy.onrender.com/api/login', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     email,
-    //     password,
-    //   }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data) {
-    //       window.alert('success');
-    //     }
-    //   });
   };
 
   return (
@@ -67,13 +52,7 @@ export default function Login() {
         </div>
         <div className="max-w-md w-full space-y-5 lg:pt-[140px] lg:ml-20">
           <div>
-            <Link to="/">
-              <img
-                className="mx-auto h-12 w-auto"
-                src={logoImage}
-                alt="Learn with sumit"
-              />
-            </Link>
+
             <h2 className="mt-6 text-center text-3xl font-extrabold ">
               Sign in to your account
             </h2>

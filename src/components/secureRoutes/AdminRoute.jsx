@@ -1,16 +1,17 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import UseAuth from '../../hooks/UseAuth';
+import { useSelector } from 'react-redux';
 
 const AdminRoute = ({ children }) => {
     const isLoggedIn = UseAuth();
-
-    console.log(isLoggedIn);
+    const auth = useSelector((state) => state.auth);
+    const admin = auth?.user?.role === 'admin'
     const location = useLocation();
 
-    if (isLoggedIn) {
+    if (isLoggedIn && admin) {
         return children;
     } else {
-        return <Navigate to="/login"></Navigate>;
+        return <Navigate to="/"></Navigate>;
     }
 };
 

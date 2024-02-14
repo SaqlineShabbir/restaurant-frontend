@@ -10,7 +10,7 @@ export default function NavBar() {
   const isLoggedIn = UseAuth();
   const authChecked = useAuthCheck();
   const dispatch = useDispatch();
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState(localStorage.getItem('mode'));
   const auth = useSelector((state) => state.auth);
 
 
@@ -35,6 +35,14 @@ export default function NavBar() {
     dispatch(userLoggedOut());
 
   };
+
+  //mode functionality
+  const handleLight = () => {
+    localStorage.setItem('mode', 'light')
+  }
+  const handleDark = () => {
+    localStorage.setItem('mode', 'dark')
+  }
   return (
     <nav
       id="home"
@@ -156,12 +164,14 @@ export default function NavBar() {
                   <div className="shadow-card flex h-[46px] w-[82px] items-center justify-center rounded-md">
                     {isChecked && (
                       <span
+                        onClick={handleLight}
                         className={`flex h-9 w-9 items-center justify-center rounded text-black dark:text-white  ${!isChecked
                           ? 'bg-blue-200 text-black'
                           : 'text-body-color'
                           }`}
                       >
                         <svg
+
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -193,6 +203,7 @@ export default function NavBar() {
                           }`}
                       >
                         <svg
+                          onClick={handleDark}
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -212,7 +223,7 @@ export default function NavBar() {
                   {/* // */}
                 </label>
 
-                <div className=""> <p className='font-bold text-xl py-2 border-orange-500 border-2 rounded-full px-4' >{auth?.user?.name.slice(0, 1)}</p></div>
+                {auth?.user && <div className=""> <p className='font-bold text-xl py-2 border-orange-500 border-2 rounded-full px-4' >{auth?.user?.name.slice(0, 1)}</p></div>}
               </>
             </ul>
           </div>

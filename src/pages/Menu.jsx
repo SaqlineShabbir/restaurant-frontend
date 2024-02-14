@@ -11,9 +11,7 @@ const Menu = () => {
   //call provided hook from menu api
   const { data: menus, isLoading, isError } = useGetMenusQuery();
 
-  // console.log(auth.user._id);
-  // console.log('by id', data);
-  // console.log('menudata', menus?.data[0]);
+
   // decide what to  render
   let content = null;
   if (isLoading) {
@@ -41,18 +39,18 @@ const Menu = () => {
 
   return (
     <div className="menu-main  py-20  dark:bg-[#0a0c1c] ">
-      <div>
-        <div className="flex space-x-10 justify-center">
-          <p className="bg-orange-500 py-3 px-10 rounded   text-white active:ring-1">
+      <div className='w-full'>
+        <div className="flex lg:space-x-10 space-x-3 justify-center">
+          <p className="bg-orange-500 py-1 px-5 rounded   text-white active:ring-1">
             Pizza
           </p>
-          <p className="bg-orange-500 py-3 px-10 rounded   text-white active:ring-1">
+          <p className="bg-orange-500 py-1 px-5 rounded   text-white active:ring-1">
             Burger
           </p>
-          <p className="bg-orange-500 py-3 px-10 rounded   text-white active:ring-1">
+          <p className="bg-orange-500 py-1 px-5 rounded   text-white active:ring-1">
             Pasta
           </p>
-          <p className="bg-orange-500 py-3 px-10 rounded   text-white active:ring-1">
+          <p className="bg-orange-500 py-1 px-5 rounded   text-white active:ring-1">
             Noodles
           </p>
         </div>

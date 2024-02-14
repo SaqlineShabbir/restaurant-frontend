@@ -4,10 +4,10 @@ export const orderApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     //from here
     getOrders: builder.query({
-      query: () => '/menu',
+      query: (id) => `/order`,
       keepUnusedDataFor: 600,
+      providesTags: ['Orders'],
     }),
-
     getOrdersByUserId: builder.query({
       query: (id) => `/order/${id}`,
       keepUnusedDataFor: 600,
@@ -48,3 +48,5 @@ export const {
   useDeleteOrderMutation,
   useUpdateOrderMutation,
 } = orderApi;
+
+

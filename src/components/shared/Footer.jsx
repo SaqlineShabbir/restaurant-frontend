@@ -14,7 +14,7 @@ const Footer = () => {
           <ul className="items-center space-y-8 md:flex md:space-x-6 md:space-y-0 dark:text-white">
             <li className=" hover:text-black-600 focus:border-gray-100 cursor-pointer">
               <Link smooth to="/">
-                <p>Welcome to Restaurant</p>
+                <p>Welcome to Restaurant X</p>
               </Link>
             </li>
 

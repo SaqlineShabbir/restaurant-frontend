@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Description from '../components/menu/menuDetails/Description';
 import Review from '../components/menu/menuDetails/Review';
 import DescriptionLoader from '../components/ui/loaders/DescriptionLoader';
 import { useGetMenuByIdQuery } from '../features/menu/menuApi';
 import { usePostOrderMutation } from '../features/order/orderApi';
+import { useSelector } from 'react-redux';
+
 
 const MenuDetail = () => {
   const [active, setActive] = useState('description');
   const [error, setError] = useState('');
   const [quantity, setQuantity] = useState(1);
-
+  const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   //get the menu id
   const [searchParams] = useSearchParams();
@@ -19,31 +21,19 @@ const MenuDetail = () => {
   //call provided hook from menu api
   const { data: menu, isLoading, isError } = useGetMenuByIdQuery(id);
 
+
   // add to cart
 
   const [
     postOrder,
-    { data, isLoading: isPostOrderLoading, error: postOrderError },
+    { data: orderData, isLoading: isPostOrderLoading, error: postOrderError },
   ] = usePostOrderMutation();
 
-  if (postOrderError?.data) {
-    setError(postOrderError?.data?.message);
-  }
 
-  if (postOrderError?.status === 401) {
-    navigate('/login');
-  }
-
-  if (data?.status === 'success') {
-    navigate('/dashboard/cart');
-    alert('successfully ordered');
-  }
-
-  const total = quantity * menu?.data?.price;
-  console.log('datttaa', menu?.data)
   const handleOrder = () => {
 
     postOrder({
+      user: auth?.user?._id,
       name: menu.data.name,
       description: menu.data.description,
       price: menu.data.price,
@@ -55,6 +45,24 @@ const MenuDetail = () => {
     });
 
   };
+  // Handle order and error outside the render method
+  useEffect(() => {
+    if (postOrderError?.data) {
+      setError(postOrderError?.data?.message);
+    }
+
+    if (postOrderError?.status === 401) {
+      navigate('/login');
+    }
+
+    if (orderData?.status === 'success') {
+      navigate('/dashboard/cart');
+      alert('Successfully ordered');
+    }
+  }, [postOrderError, orderData, navigate]);
+
+  const total = quantity * menu?.data?.price;
+
 
   // handle quantity
   const handleIncrement = () => {

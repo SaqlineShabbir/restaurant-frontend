@@ -11,6 +11,7 @@ const AddMenu = () => {
 
     const formData = new FormData()
 
+
     formData.append('name', name)
     formData.append('description', description)
     formData.append('price', price)
@@ -28,24 +29,24 @@ const AddMenu = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData)
+
         postMenu(formData)
     }
-    console.log(data)
+
     if (postMenuError) {
         console.log(postMenuError)
     }
     return (
-        <main className='flex  justify-center'>
+        <main className='flex  justify-center dark:bg-[#0a0c1c] dark:text-white'>
             <section className='py-10'>
                 <div className='flex justify-start items-center'>
-                    <form onSubmit={handleSubmit} className='bg-green-50 w-[500px] p-10 shadow space-y-4 rounded'>
+                    <form onSubmit={handleSubmit} className='bg-green-50 w-[500px] p-10 shadow space-y-4 rounded dark:bg-[#0a0c1c]'>
 
                         <div>
                             <label className='text-lg text-slate-500'>Title</label>
                             <input type="text" placeholder='Enter Name'
                                 required
-                                className='rounded-md py-2 px-2 border w-full'
+                                className='rounded-md py-2 px-2 border w-full  dark:bg-[#0a0c1c]'
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </div>
@@ -56,7 +57,7 @@ const AddMenu = () => {
 
                                 name="description"
                                 rows="4"
-                                className="mt-1 p-2 w-full border rounded focus:outline-none focus:border-black"
+                                className="mt-1 p-2 w-full border dark:bg-[#0a0c1c] rounded focus:outline-none focus:border-black"
                                 placeholder="Enter description..."
                                 required
                                 onChange={(e) => setDescription(e.target.value)}
@@ -66,15 +67,15 @@ const AddMenu = () => {
                         <div>
                             <label className='text-lg text-slate-500'>Menu Price</label>
                             <input type="number" placeholder='Enter price'
-                                className='rounded-md py-2 px-2 border w-full'
+                                className='rounded-md py-2 px-2 border w-full dark:bg-[#0a0c1c]'
                                 required
                                 onChange={(e) => setPrice(e.target.value)}
                             />
                         </div>
                         <div>
                             <label className='text-lg text-slate-500'>Menu Category</label>
-                            <input type="text" placeholder='Enter price'
-                                className='rounded-md py-2 px-2 border w-full'
+                            <input type="text" placeholder='Enter Category'
+                                className='rounded-md py-2 px-2 border w-full dark:bg-[#0a0c1c]'
                                 required
                                 onChange={(e) => setCategory(e.target.value)}
                             />
@@ -96,13 +97,13 @@ const AddMenu = () => {
 
                         <label className='text-lg text-slate-500' >Image</label>
                         <div className='flex space-x-2'>
-                            <label className="flex justify-center items-center px-4 py-1 bg-orange-100 text-orange-500 rounded-md cursor-pointer border-2 border-orange-300 w-full">
+                            <label className="flex justify-center items-center px-4 py-1 bg-orange-100  dark:bg-[#0a0c1c] text-orange-500 rounded-md cursor-pointer border-2 border-orange-300 w-full">
                                 <IoCloudUploadOutline className="w-8 h-8 mr-4" />
                                 Upload File
                                 <input
                                     name='photo'
                                     type="file"
-                                    className="hidden"
+                                    className="hidden dark:bg-[#0a0c1c]"
                                     onChange={(e) => setPhoto(e.target.files[0])}
                                 />
                             </label>

@@ -8,9 +8,6 @@ const ManageMenu = () => {
     // getmenus
     const { data: menus, isLoading, isError } = useGetMenusQuery();
 
-
-
-
     //decide what to  render
     let content = null;
     if (isLoading) {

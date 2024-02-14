@@ -1,19 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import OrderCard from '../components/order/OrderCard';
+import DescriptionLoader from '../components/ui/loaders/DescriptionLoader';
+import { useGetOrdersByUserIdQuery } from '../features/order/orderApi';
 
-import { useGetOrdersByUserIdQuery } from '../../features/order/orderApi';
-import CartTotal from '../../components/dashboard/CartTotal';
-import OrderCard from '../../components/order/OrderCard';
-import DescriptionLoader from '../../components/ui/loaders/DescriptionLoader';
-
-const Cart = () => {
+const ExampleCart = () => {
     const auth = useSelector((state) => state.auth);
-    const userid = auth?.user?._id
+
     const {
         data: orders,
         isLoading,
         isError,
-    } = useGetOrdersByUserIdQuery(userid);
+    } = useGetOrdersByUserIdQuery(auth?.user?._id);
 
     let content = null;
     if (isLoading) {
@@ -34,10 +32,10 @@ const Cart = () => {
     }
 
     if (!isLoading && !isError && orders?.data?.length > 0) {
-        content = <div className="lg:w-[870px] rounded-xl shadow-md border">
-            <table className="min-w-full bg-white  overflow-hidden  ">
+        content = <div className="lg:w-[870px]">
+            <table className="min-w-full bg-white rounded-xl shadow-md overflow-hidden">
                 <thead>
-                    <tr className="bg-orange-400 text-gray-600 uppercase text-sm leading-normal">
+                    <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                         <th className="py-3 px-6 text-left">Product</th>
                         <th className="py-3 px-6 text-left">Unit Price</th>
                         <th className="py-3 px-6 text-left">Quantity</th>
@@ -52,18 +50,15 @@ const Cart = () => {
                     {/* <!-- You can replicate the <tr>...</tr> for more rows --> */}
                 </tbody>
             </table>
-            <CartTotal orders={orders?.data}></CartTotal>
-
         </div>
     }
 
     return (
-        <div className="grid  grid-cols-1 place-items-center lg:px-[250px] lg:py-[0px]  py-20 gap-5 min-h-[70vh] dark:bg-[#0a0c1c] dark:text-white">
+        <div className="grid  grid-cols-1 place-items-center lg:px-[250px] lg:py-[0px]  py-20 gap-5 min-h-[70vh]">
             {/* //menu card */}
             {content}
-
         </div>
     );
 };
 
-export default Cart;
+export default ExampleCart;

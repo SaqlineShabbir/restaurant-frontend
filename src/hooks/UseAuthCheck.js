@@ -6,7 +6,7 @@ export default function useAuthCheck() {
   const dispatch = useDispatch();
   const [authChecked, setAuthChecked] = useState(false);
   const localAuth = localStorage.getItem('auth');
-  console.log('lo', localAuth)
+
 
   useEffect(() => {
     if (localAuth) {

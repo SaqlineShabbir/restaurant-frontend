@@ -2,7 +2,7 @@ import React from 'react';
 
 const UpdateProfile = () => {
     return (
-        <div className='flex justify-center'>
+        <div className='flex justify-center dark:text-white'>
             <p>This is update profile page functionality coming soon</p>
         </div>
     );

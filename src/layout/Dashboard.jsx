@@ -9,7 +9,7 @@ export default function Dashboard({ children }) {
     <>
       <Navigation></Navigation>
       <div
-        className={` relative h-full font-sans antialiased`}>
+        className={` relative h-full font-sans antialiased dark:bg-[#0a0c1c]`}>
 
         <main className='relative flex min-h-screen '>
           {/* TODO Navbar here */}

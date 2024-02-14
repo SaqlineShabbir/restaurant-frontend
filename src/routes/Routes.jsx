@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Dashboard from '../layout/Dashboard';
 import Main from '../layout/Main';
 import AboutUs from '../pages/AboutUs';
-import Cart from '../pages/Cart';
+
 import Home from '../pages/Home';
 import Jobs from '../pages/Jobs';
 import Login from '../pages/Login';
@@ -15,6 +15,10 @@ import UserProfile from '../pages/dashboard/UserProfile';
 import MakeAdmin from '../pages/dashboard/MakeAdmin';
 import UpdateProfile from '../pages/dashboard/UpdateProfile';
 import ManageMenu from '../pages/dashboard/ManageMenu';
+import Cart from '../pages/dashboard/Cart';
+import ExampleCart from '../pages/ExampleCart';
+import AdminRoute from '../components/secureRoutes/AdminRoute';
+
 
 
 export const router = createBrowserRouter([
@@ -70,7 +74,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/add-menu',
-        element: <AddMenu></AddMenu>,
+        element: <AdminRoute><AddMenu></AddMenu></AdminRoute>,
       },
       {
         path: '/dashboard/update-profile',
@@ -78,11 +82,11 @@ export const router = createBrowserRouter([
       },
       {
         path: 'dashboard/manage-menus',
-        element: <ManageMenu></ManageMenu>
+        element: <AdminRoute><ManageMenu></ManageMenu></AdminRoute>
       },
       {
         path: 'dashboard/make-admin',
-        element: <MakeAdmin></MakeAdmin>,
+        element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>,
       },
     ],
   },
