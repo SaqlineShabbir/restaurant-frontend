@@ -18,6 +18,7 @@ import ManageMenu from '../pages/dashboard/ManageMenu';
 import Cart from '../pages/dashboard/Cart';
 import ExampleCart from '../pages/ExampleCart';
 import AdminRoute from '../components/secureRoutes/AdminRoute';
+import PrivateRoute from '../components/secureRoutes/PrivateRoute';
 
 
 
@@ -62,7 +63,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
       {
         path: '/dashboard/',
