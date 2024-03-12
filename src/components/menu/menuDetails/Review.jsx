@@ -17,7 +17,7 @@ const Review = ({ menu }) => {
     postReview,
     { data, isLoading: isPostReviewLoading, error: postReviewError },
   ] = usePostReviewMutation();
-  console.log("post review", data, postReviewError)
+
   const handlePostReview = (e) => {
     e.preventDefault();
     postReview({

@@ -13,24 +13,24 @@ const Footer = () => {
         <div className="lg:flex justify-between   pb-10">
           <ul className="items-center space-y-8 md:flex md:space-x-6 md:space-y-0 dark:text-white">
             <li className=" hover:text-black-600 focus:border-gray-100 cursor-pointer">
-              <Link smooth to="/">
+              <Link to="/">
                 <p>Welcome to Restaurant X</p>
               </Link>
             </li>
 
             <li className=" hover:text-black-600 cursor-pointer">
-              <Link smooth to="/about-us">
+              <Link to="/about-us">
                 <p>About us</p>
               </Link>
             </li>
 
             <li className=" hover:text-black-600 cursor-pointer">
-              <Link smooth to="/menu">
+              <Link to="/menu">
                 <p>Menu</p>
               </Link>
             </li>
             <li className=" hover:text-black-600 cursor-pointer">
-              <Link smooth to="/signup">
+              <Link to="/signup">
                 <p>Signup</p>
               </Link>
             </li>

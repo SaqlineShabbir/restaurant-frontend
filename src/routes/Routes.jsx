@@ -19,6 +19,7 @@ import Cart from '../pages/dashboard/Cart';
 import ExampleCart from '../pages/ExampleCart';
 import AdminRoute from '../components/secureRoutes/AdminRoute';
 import PrivateRoute from '../components/secureRoutes/PrivateRoute';
+import PreventLoginRoute from '../components/secureRoutes/PreventLoginRoute';
 
 
 
@@ -33,11 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/signup',
-        element: <Register></Register>,
+        element: <PreventLoginRoute><Register></Register></PreventLoginRoute>,
       },
       {
         path: '/login',
-        element: <Login></Login>,
+        element: <PreventLoginRoute><Login></Login></PreventLoginRoute>,
       },
       {
         path: '/menu',
@@ -51,38 +52,25 @@ export const router = createBrowserRouter([
         path: '/jobs',
         element: <Jobs></Jobs>,
       },
-      {
-        path: '/cart',
-        element: <Cart></Cart>,
-      },
+
       {
         path: '/menu/:menuId',
         element: <MenuDetail></MenuDetail>,
-      },
-    ],
-  },
-  {
-    path: '/dashboard',
-    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    children: [
-      {
-        path: '/dashboard/',
-        element: <UserProfile></UserProfile>,
       },
       {
         path: '/dashboard/cart',
         element: <Cart></Cart>,
       },
       {
+        path: '/dashboard/update-profile',
+        element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>,
+      },
+      {
         path: '/dashboard/add-menu',
         element: <AdminRoute><AddMenu></AddMenu></AdminRoute>,
       },
       {
-        path: '/dashboard/update-profile',
-        element: <UpdateProfile></UpdateProfile>
-      },
-      {
-        path: 'dashboard/manage-menus',
+        path: '/dashboard/manage-menus',
         element: <AdminRoute><ManageMenu></ManageMenu></AdminRoute>
       },
       {
@@ -91,4 +79,34 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   path: '/dashboard',
+  //   element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+  //   children: [
+  //     {
+  //       path: '/dashboard/',
+  //       element: <UserProfile></UserProfile>,
+  //     },
+  //     {
+  //       path: '/dashboard/cart',
+  //       element: <Cart></Cart>,
+  //     },
+  //     {
+  //       path: '/dashboard/add-menu',
+  //       element: <AdminRoute><AddMenu></AddMenu></AdminRoute>,
+  //     },
+  //     {
+  //       path: '/dashboard/update-profile',
+  //       element: <UpdateProfile></UpdateProfile>
+  //     },
+  //     {
+  //       path: 'dashboard/manage-menus',
+  //       element: <AdminRoute><ManageMenu></ManageMenu></AdminRoute>
+  //     },
+  //     {
+  //       path: 'dashboard/make-admin',
+  //       element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>,
+  //     },
+  //   ],
+  // },
 ]);

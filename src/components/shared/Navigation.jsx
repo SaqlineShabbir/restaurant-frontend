@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import img from '../../assets/logo/Restaurant-logo-removebg-preview.png';
 import { userLoggedOut } from '../../features/auth/authSlice';
 import UseAuth from '../../hooks/UseAuth';
 import useAuthCheck from '../../hooks/UseAuthCheck';
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { IoIosLogOut } from 'react-icons/io';
+
 export default function NavBar() {
+  const [dropdown, setDropdown] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const isLoggedIn = UseAuth();
   const authChecked = useAuthCheck();
@@ -14,6 +18,25 @@ export default function NavBar() {
   const auth = useSelector((state) => state.auth);
 
 
+
+  //dropdown
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownRef]);
+
+  //theme
   useEffect(() => {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
@@ -53,7 +76,7 @@ export default function NavBar() {
           <div className="flex items-center justify-between   md:block ">
             <p className="flex">
               <img className="w-14" src={img} alt="" />
-              <h2 className="text-lg font-bold mt-4 ">Restaurant X</h2>
+              <span className="text-lg font-bold mt-4 ">Restaurant X</span>
             </p>
             <div className="md:hidden">
               <button
@@ -101,41 +124,83 @@ export default function NavBar() {
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 dark:text-white">
               <li className=" hover:text-black-600 focus:border-gray-100 cursor-pointer">
-                <Link smooth to="/">
+                <Link to="/">
                   <p>Home</p>
                 </Link>
               </li>
 
               <li className=" hover:text-black-600 cursor-pointer">
-                <Link smooth to="/about-us">
+                <Link to="/about-us">
                   <p>About us</p>
                 </Link>
               </li>
 
               <li className=" hover:text-black-600 cursor-pointer">
-                <Link smooth to="/menu">
+                <Link to="/menu">
                   <p>Menu</p>
                 </Link>
               </li>
-              {isLoggedIn && <li className=" hover:text-black-600 cursor-pointer">
-                <Link smooth to="/dashboard">
-                  <p>dashboard</p>
-                </Link>
-              </li>}
+
+
+              {isLoggedIn && (
+                <li
+                  className="group relative cursor-pointer"
+                  onClick={() => setDropdown(!dropdown)}
+                  ref={dropdownRef}
+                >
+                  <div className='flex items-center'>
+                    <p className="hover:text-black-600">Dashboard </p>
+                    <RiArrowDropDownLine size={35} />
+                  </div>
+
+                  {dropdown && (
+                    <div className='lg:absolute bg-white dark:bg-[#0a0c1c] dark:text-white text-black right-0 w-[200px] border border-gray-200 py-5 transition-all duration-300 opacity-100 transform scale-y-100'>
+                      <ul className=''>
+                        {/* Add your dropdown items here */}
+                        <Link to="dashboard/cart">
+                          <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
+                            Your Cart
+                          </li>
+                        </Link>
+                        <Link to="dashboard/update-profile">
+                          <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
+                            Update Profile
+                          </li>
+                        </Link>
+                        <Link to="dashboard/add-menu">
+                          <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
+                            Add Menu
+                          </li>
+                        </Link>
+                        <Link to="dashboard/manage-menus">
+                          <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
+                            Manage Menus
+                          </li>
+                        </Link>
+                        <Link to="dashboard/make-admin">
+                          <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
+                            Make Admin
+                          </li>
+                        </Link>
+                      </ul>
+                    </div>
+                  )}
+                </li>
+              )}
               {!isLoggedIn && <li className=" hover:text-black-600 cursor-pointer">
-                <Link smooth to="/signup">
+                <Link to="/signup">
                   <p>Signup</p>
                 </Link>
               </li>}
               {!isLoggedIn && (
                 <li className=" hover:text-black-600  cursor-pointer">
-                  <Link smooth to="/login">
+                  <Link to="/login">
                     <p>Login</p>
                   </Link>
                 </li>
               )}
               <li className=" hover:text-black-600  cursor-pointer">
-                <Link smooth to="/jobs">
+                <Link to="/jobs">
                   <p>Jobs</p>
                 </Link>
               </li>
@@ -145,8 +210,8 @@ export default function NavBar() {
                   onClick={logOut}
                   className=" hover:text-black-600 cursor-pointer"
                 >
-                  <Link smooth to="/login">
-                    <p>Logout</p>
+                  <Link to="/login">
+                    <IoIosLogOut size={20} />
                   </Link>
                 </li>
               )}

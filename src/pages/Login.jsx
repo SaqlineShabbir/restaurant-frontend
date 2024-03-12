@@ -110,8 +110,10 @@ export default function Login() {
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                 disabled={isLoading}
               >
-                Sign in
+                Login
               </button>
+              <p className='pt-2 text-center pb-3'>Do not have any account?  <Link className='text-blue-500' to="/signup">Signup</Link> </p>
+              <hr />
             </div>
             {/* //show error here */}
             {responseError && (

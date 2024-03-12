@@ -11,7 +11,7 @@ const MakeAdmin = () => {
         makeAdmin({ email: email })
     }
     return (
-        <div className='flex justify-center dark:text-white'>
+        <div className='flex justify-center items-center dark:text-white min-h-[80vh]'>
             <form onSubmit={handleSubmit} action="" className=''>
                 <input type="email" placeholder='x@gmail.com' className='border px-3 py-2' name="" id="" onChange={(e) => setEmail(e.target.value)} />
                 <button type="submit" className='bg-orange-500 px-5 py-2 text-white'>Submit</button>
