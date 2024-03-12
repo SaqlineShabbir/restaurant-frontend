@@ -45,7 +45,7 @@ const ManageMenu = () => {
                     </div>
 
                 </div>
-                <div className='p-4 bg-white flex justify-between'>
+                <div className='p-4 bg-white dark:bg-[#0a0c1c] flex justify-between'>
                     <h3 className='text-xl font-semibold mb-2'>{menu?.name}</h3>
                     <div className='flex space-x-5'>
                         <span className='text-pink-500 text-2xl cursor-pointer'><MdEditSquare /></span>
@@ -64,7 +64,7 @@ const ManageMenu = () => {
         deleteMenu(id)
     }
     return (
-        <div className='min-h-[90vh] lg:px-20 pt-20 px-5 '>
+        <div className='min-h-[90vh] lg:px-20 pt-20 px-5 dark:bg-[#0a0c1c] dark:text-white'>
             <div className='grid md:grid-cols-3 grid-col-1 gap-2 '>
                 {content}
             </div>

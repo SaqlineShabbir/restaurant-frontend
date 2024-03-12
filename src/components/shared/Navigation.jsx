@@ -74,10 +74,10 @@ export default function NavBar() {
       <div className="justify-between px-4   md:items-center md:flex md:px-20 ">
         <div>
           <div className="flex items-center justify-between   md:block ">
-            <p className="flex">
+            <Link to='/'><div className="flex cursor-pointer ">
               <img className="w-14" src={img} alt="" />
               <span className="text-lg font-bold mt-4 ">Restaurant X</span>
-            </p>
+            </div></Link>
             <div className="md:hidden">
               <button
                 className="p-2  rounded-md outline-none focus:border-gray-400 focus:border"

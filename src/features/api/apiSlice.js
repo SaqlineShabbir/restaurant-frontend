@@ -4,7 +4,7 @@ export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://restaurant-backend-rpyy.onrender.com/api',
-
+    // https://restaurant-backend-rpyy.onrender.com//api//
     prepareHeaders: async (headers, { getState, endpoint }) => {
       const token = getState()?.auth?.token;
       //if token 
