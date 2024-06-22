@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { MdEditSquare } from "react-icons/md";
+import EditMenuModal from "../../components/models/EditMenuModal";
 import DescriptionLoader from "../../components/ui/loaders/DescriptionLoader";
 import {
   useDeleteMenuMutation,
   useGetMenusQuery,
 } from "../../features/menu/menuApi";
 const ManageMenu = () => {
-  const handleEdit = (menu) => {
-    console.log(menu);
+  const [openModal, setOpenModal] = useState(false);
+  const [menuId, setMenuId] = useState(null);
+
+  const handleEdit = (menuId) => {
+    setMenuId(menuId);
   };
   // getmenus
   const { data: menus, isLoading, isError } = useGetMenusQuery();
@@ -50,8 +54,11 @@ const ManageMenu = () => {
         <div className="p-4 bg-white dark:bg-[#0a0c1c] flex justify-between">
           <h3 className="text-xl font-semibold mb-2">{menu?.name}</h3>
           <div className="flex space-x-5">
-            <span className="text-pink-500 text-2xl cursor-pointer">
-              <MdEditSquare onClick={() => handleEdit(menu)} />
+            <span
+              onClick={() => setOpenModal(true)}
+              className="text-pink-500 text-2xl cursor-pointer"
+            >
+              <MdEditSquare onClick={() => handleEdit(menu?._id)} />
             </span>
             <span className=" text-2xl text-pink-500 cursor-pointer">
               <AiFillDelete onClick={() => handleDeleteService(menu?._id)} />
@@ -59,7 +66,7 @@ const ManageMenu = () => {
           </div>
         </div>
         {openModal && (
-          <EditMenuModal setOpenModal={setOpenModal} menus={MenuData} />
+          <EditMenuModal setOpenModal={setOpenModal} menuId={menuId} />
         )}
       </div>
     ));
