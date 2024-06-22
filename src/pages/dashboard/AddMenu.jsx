@@ -9,16 +9,16 @@ const AddMenu = () => {
     const [photo, setPhoto] = useState('')
     const [category, setCategory] = useState('')
 
-    const formData = new FormData()
+    // const formData = new FormData()
 
 
-    formData.append('name', name)
-    formData.append('description', description)
-    formData.append('price', price)
-    formData.append('photo', photo)
-    formData.append('category', category)
-    formData.append('status', "in-stock")
-    formData.append('quantity', 1)
+    // formData.append('name', name)
+    // formData.append('description', description)
+    // formData.append('price', price)
+    // formData.append('photo', photo)
+    // formData.append('category', category)
+    // formData.append('status', "in-stock")
+    // formData.append('quantity', 1)
 
 
     // add to menu
@@ -27,11 +27,27 @@ const AddMenu = () => {
         { data, isLoading: isPostMenuLoading, error: postMenuError },
     ] = usePostMenuMutation();
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
 
-        postMenu(formData)
-    }
+        try {
+            const response = await postMenu({
+                name,
+                description,
+                price,
+                photo,
+                category,
+                status: "in-stock",
+                quantity: 1,
+            });
+
+            // Handle the response
+            console.log(response);
+        } catch (error) {
+            // Handle errors
+            console.error(error);
+        }
+    };
 
     if (postMenuError) {
         console.log(postMenuError)

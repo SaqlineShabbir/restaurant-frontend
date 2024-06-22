@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import Description from '../components/menu/menuDetails/Description';
-import Review from '../components/menu/menuDetails/Review';
-import DescriptionLoader from '../components/ui/loaders/DescriptionLoader';
-import { useGetMenuByIdQuery } from '../features/menu/menuApi';
-import { usePostOrderMutation } from '../features/order/orderApi';
-import { useSelector } from 'react-redux';
-
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import Description from "../components/menu/menuDetails/Description";
+import Review from "../components/menu/menuDetails/Review";
+import DescriptionLoader from "../components/ui/loaders/DescriptionLoader";
+import { useGetMenuByIdQuery } from "../features/menu/menuApi";
+import { usePostOrderMutation } from "../features/order/orderApi";
 
 const MenuDetail = () => {
-  const [active, setActive] = useState('description');
-  const [error, setError] = useState('');
+  const [active, setActive] = useState("description");
+  const [error, setError] = useState("");
   const [quantity, setQuantity] = useState(1);
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   //get the menu id
   const [searchParams] = useSearchParams();
-  const id = searchParams.get('id');
+  const id = searchParams.get("id");
 
   //call provided hook from menu api
   const { data: menu, isLoading, isError } = useGetMenuByIdQuery(id);
-
 
   // add to cart
 
@@ -29,9 +27,7 @@ const MenuDetail = () => {
     { data: orderData, isLoading: isPostOrderLoading, error: postOrderError },
   ] = usePostOrderMutation();
 
-
   const handleOrder = () => {
-
     postOrder({
       user: auth?.user?._id,
       name: menu.data.name,
@@ -43,7 +39,6 @@ const MenuDetail = () => {
       quantity: quantity,
       status: menu.data.status,
     });
-
   };
   // Handle order and error outside the render method
   useEffect(() => {
@@ -52,17 +47,16 @@ const MenuDetail = () => {
     }
 
     if (postOrderError?.status === 401) {
-      navigate('/login');
+      navigate("/login");
     }
 
-    if (orderData?.status === 'success') {
-      navigate('/dashboard/cart');
-      alert('Successfully ordered');
+    if (orderData?.status === "success") {
+      navigate("/dashboard/cart");
+      alert("Successfully ordered");
     }
   }, [postOrderError, orderData, navigate]);
 
   const total = quantity * menu?.data?.price;
-
 
   // handle quantity
   const handleIncrement = () => {
@@ -140,26 +134,28 @@ const MenuDetail = () => {
         {/* //here */}
         <div className="space-x-10  py-5">
           <button
-            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${active === 'description' && ' border-b-2 border-b-orange-400'
-              }`}
-            onClick={() => setActive('description')}
+            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${
+              active === "description" && " border-b-2 border-b-orange-400"
+            }`}
+            onClick={() => setActive("description")}
           >
             Description
           </button>
           <button
-            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${active === 'reviews' && ' border-b-2 border-b-orange-400'
-              }`}
-            onClick={() => setActive('reviews')}
+            className={`text-xl font-bold active:border-b-2 active:border-b-orange-300 ${
+              active === "reviews" && " border-b-2 border-b-orange-400"
+            }`}
+            onClick={() => setActive("reviews")}
           >
             Reviews
           </button>
         </div>
 
         <div>
-          {active === 'description' && (
+          {active === "description" && (
             <Description menu={menu.data}></Description>
           )}
-          {active === 'reviews' && <Review menu={menu.data}></Review>}
+          {active === "reviews" && <Review menu={menu.data}></Review>}
         </div>
       </div>
     );

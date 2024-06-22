@@ -1,59 +1,54 @@
-import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logoImage from '../assets/react.svg';
-import authImg from '../assets/svg/auth-removebg-preview.png';
-import { useLoginMutation } from '../features/auth/authApi';
-
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import authImg from "../assets/svg/auth-removebg-preview.png";
+import { useLoginMutation } from "../features/auth/authApi";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  //from redux
+  // from redux
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
 
   const navigate = useNavigate();
   const location = useLocation();
-  //check where user came from
-  const form = location.state?.form?.pathname || '/';
-
+  // check where user came from
+  const form = location.state?.form?.pathname || "/";
 
   useEffect(() => {
     if (responseError?.data) {
       setError(responseError?.data?.message);
     }
-    if (data?.status === 'success') {
+    if (data?.status === "success") {
       navigate(form, { replace: true });
-
-
     }
-  }, [data, responseError, navigate]);
+  }, [data, responseError, navigate, form]);
 
-  //submit data
+  // submit data
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    setError('');
-
-    login({
-      email,
-      password,
-    });
-
-
+    try {
+      await login({
+        email,
+        password,
+      }).unwrap();
+    } catch (err) {
+      setError(err.data?.message || "An error occurred during login.");
+    }
   };
 
   return (
     <div className="grid place-items-center h-screen dark:bg-[#0a0c1c] dark:text-white">
-      <div className="min-h-full lg:flex  py-12 px-4 sm:px-6 lg:px-8 ">
+      <div className="min-h-full lg:flex py-12 px-4 sm:px-6 lg:px-8">
         <div>
           <img className="lg:h-[550px] lg:w-[700px]" src={authImg} alt="" />
         </div>
         <div className="max-w-md w-full space-y-5 lg:pt-[140px] lg:ml-20">
           <div>
-
-            <h2 className="mt-6 text-center text-3xl font-extrabold ">
+            <h2 className="mt-6 text-center text-3xl font-extrabold">
               Sign in to your account
             </h2>
           </div>
@@ -93,34 +88,28 @@ export default function Login() {
               </div>
             </div>
 
-            <div className="flex items-center justify-end">
-              <div className="text-sm">
-                {/* <Link
-                  to="/register"
-                  className="font-medium text-violet-600 hover:text-violet-500"
-                >
-                  Register
-                </Link> */}
-              </div>
-            </div>
-
             <div>
+              {error && (
+                <p className="text-red-500 py-1  text-center bg-red-100">
+                  {error}
+                </p>
+              )}
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                className="group relative w-full mt-5 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
                 disabled={isLoading}
               >
                 Login
               </button>
-              <p className='pt-2 text-center pb-3'>Do not have any account?  <Link className='text-blue-500' to="/signup">Signup</Link> </p>
+              <p className="pt-2 text-center pb-3">
+                Do not have any account?{" "}
+                <Link className="text-blue-500" to="/signup">
+                  Signup
+                </Link>
+              </p>
               <hr />
             </div>
-            {/* //show error here */}
-            {responseError && (
-              <p className="text-red-500 py-1  text-center bg-red-100">
-                {error}
-              </p>
-            )}
+            {/* show error here */}
           </form>
         </div>
       </div>
