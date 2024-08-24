@@ -56,11 +56,11 @@ const ManageMenu = () => {
           <div className="flex space-x-5">
             <span
               onClick={() => setOpenModal(true)}
-              className="text-pink-500 text-2xl cursor-pointer"
+              className="text-orange-500 text-2xl cursor-pointer"
             >
               <MdEditSquare onClick={() => handleEdit(menu?._id)} />
             </span>
-            <span className=" text-2xl text-pink-500 cursor-pointer">
+            <span className=" text-2xl text-orange-500 cursor-pointer">
               <AiFillDelete onClick={() => handleDeleteService(menu?._id)} />
             </span>
           </div>

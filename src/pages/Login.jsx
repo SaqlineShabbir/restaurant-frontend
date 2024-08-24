@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import { CiUnlock } from "react-icons/ci";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import authImg from "../assets/svg/auth-removebg-preview.png";
 import { useLoginMutation } from "../features/auth/authApi";
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,6 +11,7 @@ export default function Login() {
   // from redux
   const [login, { data, isLoading, error: responseError }] = useLoginMutation();
 
+  console.log(data);
   const navigate = useNavigate();
   const location = useLocation();
   // check where user came from
@@ -111,6 +112,16 @@ export default function Login() {
             </div>
             {/* show error here */}
           </form>
+          <div className="bg-gray-100  py-5 flex gap-5 justify-center">
+            <div className="flex  items-center">
+              <CiUnlock color="green" size="35" />
+            </div>
+            <div>
+              <h1 className="font-bold">Demo Account</h1>
+              <p className="">abb@gmail.com</p>
+              <p className="">123456</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
