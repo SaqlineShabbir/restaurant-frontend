@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import img from '../../assets/logo/Restaurant-logo-removebg-preview.png';
-import { userLoggedOut } from '../../features/auth/authSlice';
-import UseAuth from '../../hooks/UseAuth';
-import useAuthCheck from '../../hooks/UseAuthCheck';
+import { useEffect, useRef, useState } from "react";
+import { IoIosLogOut } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { IoIosLogOut } from 'react-icons/io';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import img from "../../assets/logo/Restaurant-logo-removebg-preview.png";
+import { userLoggedOut } from "../../features/auth/authSlice";
+import UseAuth from "../../hooks/UseAuth";
+import useAuthCheck from "../../hooks/UseAuthCheck";
 
 export default function NavBar() {
   const [dropdown, setDropdown] = useState(false);
@@ -14,10 +14,8 @@ export default function NavBar() {
   const isLoggedIn = UseAuth();
   const authChecked = useAuthCheck();
   const dispatch = useDispatch();
-  const [theme, setTheme] = useState(localStorage.getItem('mode'));
+  const [theme, setTheme] = useState(localStorage.getItem("mode"));
   const auth = useSelector((state) => state.auth);
-
-
 
   //dropdown
   const dropdownRef = useRef(null);
@@ -29,19 +27,19 @@ export default function NavBar() {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef]);
 
   //theme
   useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [theme]);
 
@@ -49,23 +47,22 @@ export default function NavBar() {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   //  logout functionality here
   const logOut = () => {
-    localStorage.removeItem('auth');
+    localStorage.removeItem("auth");
     dispatch(userLoggedOut());
-
   };
 
   //mode functionality
   const handleLight = () => {
-    localStorage.setItem('mode', 'light')
-  }
+    localStorage.setItem("mode", "light");
+  };
   const handleDark = () => {
-    localStorage.setItem('mode', 'dark')
-  }
+    localStorage.setItem("mode", "dark");
+  };
   return (
     <nav
       id="home"
@@ -74,10 +71,12 @@ export default function NavBar() {
       <div className="justify-between px-4   md:items-center md:flex md:px-20 ">
         <div>
           <div className="flex items-center justify-between   md:block ">
-            <Link to='/'><div className="flex cursor-pointer ">
-              <img className="w-14" src={img} alt="" />
-              <span className="text-lg font-bold mt-4 ">Restaurant X</span>
-            </div></Link>
+            <Link to="/">
+              <div className="flex cursor-pointer ">
+                <img className="w-14" src={img} alt="" />
+                <span className="text-lg font-bold mt-4 ">Restaurant X</span>
+              </div>
+            </Link>
             <div className="md:hidden">
               <button
                 className="p-2  rounded-md outline-none focus:border-gray-400 focus:border"
@@ -119,8 +118,9 @@ export default function NavBar() {
         <div>
           {/* nav links */}
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
-              }`}
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              navbar ? "block" : "hidden"
+            }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 dark:text-white">
               <li className=" hover:text-black-600 focus:border-gray-100 cursor-pointer">
@@ -141,32 +141,31 @@ export default function NavBar() {
                 </Link>
               </li>
 
-
               {isLoggedIn && (
                 <li
                   className="group relative cursor-pointer"
                   onClick={() => setDropdown(!dropdown)}
                   ref={dropdownRef}
                 >
-                  <div className='flex items-center'>
+                  <div className="flex items-center">
                     <p className="hover:text-black-600">Dashboard </p>
                     <RiArrowDropDownLine size={35} />
                   </div>
 
                   {dropdown && (
-                    <div className='lg:absolute bg-white dark:bg-[#0a0c1c] dark:text-white text-black right-0 w-[200px] border border-gray-200 py-5 transition-all duration-300 opacity-100 transform scale-y-100'>
-                      <ul className=''>
+                    <div className="lg:absolute bg-white dark:bg-[#0a0c1c] dark:text-white text-black right-0 w-[200px] border border-gray-200 py-5 transition-all duration-300 opacity-100 transform scale-y-100">
+                      <ul className="">
                         {/* Add your dropdown items here */}
                         <Link to="dashboard/cart">
                           <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
                             Your Cart
                           </li>
                         </Link>
-                        <Link to="dashboard/update-profile">
+                        {/* <Link to="dashboard/update-profile">
                           <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
                             Update Profile
                           </li>
-                        </Link>
+                        </Link> */}
                         <Link to="dashboard/add-menu">
                           <li className="px-4 py-2 transition-all duration-300 opacity-100 transform scale-100 hover:bg-gray-100 hover:text-black shake-menu">
                             Add Menu
@@ -187,11 +186,13 @@ export default function NavBar() {
                   )}
                 </li>
               )}
-              {!isLoggedIn && <li className=" hover:text-black-600 cursor-pointer">
-                <Link to="/signup">
-                  <p>Signup</p>
-                </Link>
-              </li>}
+              {!isLoggedIn && (
+                <li className=" hover:text-black-600 cursor-pointer">
+                  <Link to="/signup">
+                    <p>Signup</p>
+                  </Link>
+                </li>
+              )}
               {!isLoggedIn && (
                 <li className=" hover:text-black-600  cursor-pointer">
                   <Link to="/login">
@@ -230,13 +231,13 @@ export default function NavBar() {
                     {isChecked && (
                       <span
                         onClick={handleLight}
-                        className={`flex h-9 w-9 items-center justify-center rounded text-black dark:text-white  ${!isChecked
-                          ? 'bg-blue-200 text-black'
-                          : 'text-body-color'
-                          }`}
+                        className={`flex h-9 w-9 items-center justify-center rounded text-black dark:text-white  ${
+                          !isChecked
+                            ? "bg-blue-200 text-black"
+                            : "text-body-color"
+                        }`}
                       >
                         <svg
-
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -262,10 +263,11 @@ export default function NavBar() {
 
                     {!isChecked && (
                       <span
-                        className={`flex h-9 w-9 items-center justify-center rounded ${isChecked
-                          ? 'bg-blue-200 text-black'
-                          : 'text-body-color'
-                          }`}
+                        className={`flex h-9 w-9 items-center justify-center rounded ${
+                          isChecked
+                            ? "bg-blue-200 text-black"
+                            : "text-body-color"
+                        }`}
                       >
                         <svg
                           onClick={handleDark}
@@ -288,7 +290,14 @@ export default function NavBar() {
                   {/* // */}
                 </label>
 
-                {auth?.user && <div className=""> <p className='font-bold text-xl py-2 border-orange-500 border-2 rounded-full px-4' >{auth?.user?.name.slice(0, 1)}</p></div>}
+                {auth?.user && (
+                  <div className="">
+                    {" "}
+                    <p className="font-bold text-xl py-2 border-orange-500 border-2 rounded-full px-4">
+                      {auth?.user?.name.slice(0, 1)}
+                    </p>
+                  </div>
+                )}
               </>
             </ul>
           </div>
