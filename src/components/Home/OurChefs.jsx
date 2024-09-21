@@ -31,7 +31,7 @@ const ChefCard = () => {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h3 className="text-orange-500 text-lg font-bold uppercase mb-2 inline-flex items-center">
-            <LuChefHat className="text-2xl" />
+            <LuChefHat color="white" className="text-2xl pr-2" />
             <span className="mr-2">Our Chef</span>{" "}
             {/* Spacing between text and icon */}
             {/* Adjust icon size here */}
