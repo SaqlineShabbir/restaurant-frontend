@@ -112,7 +112,7 @@ export default function Login() {
             </div>
             {/* show error here */}
           </form>
-          <div className="bg-gray-100  py-5 flex gap-5 justify-center">
+          <div className="bg-gray-100  py-5 flex gap-5 justify-center  dark:text-gray-700">
             <div className="flex  items-center">
               <CiUnlock color="green" size="35" />
             </div>

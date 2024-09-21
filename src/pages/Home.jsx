@@ -1,5 +1,6 @@
-import Banner from '../components/Home/Banner';
-import WhyChooseUs from '../components/Home/WhyChooseUs';
+import Banner from "../components/Home/Banner";
+import CuisineSection from "../components/Home/Cuisine";
+import WhyChooseUs from "../components/Home/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -7,6 +8,7 @@ const Home = () => {
       {/* //all components here */}
       <Banner></Banner>
       <WhyChooseUs></WhyChooseUs>
+      <CuisineSection />
       {/* <OurChefs /> */}
     </div>
   );

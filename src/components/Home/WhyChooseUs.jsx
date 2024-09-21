@@ -1,8 +1,8 @@
-import React from 'react';
-import phoneImg from '../../assets/svg/mobile-removebg.png';
+import React from "react";
+import phoneImg from "../../assets/svg/mobile-removebg.png";
 const WhyChooseUs = () => {
   return (
-    <div className="main dark:bg-[#0a0c1c] dark:text-gray-100  lg:px-[200px] py-20">
+    <div className="main dark:bg-[#0a0c1c] dark:text-gray-100  lg:px-[200px] pt-20">
       <div className="text-center">
         <p className="text-3xl font-bold">Why People Choose Us</p>
         <p>Clients’ Most Popular Choise</p>
