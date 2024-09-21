@@ -4,8 +4,10 @@ const WhyChooseUs = () => {
   return (
     <div className="main dark:bg-[#0a0c1c] dark:text-gray-100  lg:px-[200px] pt-20">
       <div className="text-center">
+        <p className="text-lg font-bold text-orange-500 ">
+          Clients’ Most Popular Choise
+        </p>
         <p className="text-3xl font-bold">Why People Choose Us</p>
-        <p>Clients’ Most Popular Choise</p>
       </div>
 
       <div className="grid lg:grid-cols-3 py-20  px-5 lg:px-0">

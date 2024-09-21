@@ -1,5 +1,6 @@
 import Banner from "../components/Home/Banner";
 import CuisineSection from "../components/Home/Cuisine";
+import ChefCard from "../components/Home/OurChefs";
 import WhyChooseUs from "../components/Home/WhyChooseUs";
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
       <Banner></Banner>
       <WhyChooseUs></WhyChooseUs>
       <CuisineSection />
-      {/* <OurChefs /> */}
+      <ChefCard />
     </div>
   );
 };

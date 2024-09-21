@@ -35,8 +35,8 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-          <div className="flex space-x-3  py-3 lg:py-0">
-            <BsFacebook height={200} width={300} className="" />
+          <div className="flex space-x-3  py-3 lg:py-0 text-orange-500">
+            <BsFacebook />
             <BsLinkedin />
           </div>
         </div>
