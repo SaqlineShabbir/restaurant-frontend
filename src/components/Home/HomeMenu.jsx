@@ -42,7 +42,7 @@ const HomeMenu = () => {
           </p>
         </div>
         <div className="lg:py-[100px] py-20">
-          <div className="grid lg:grid-cols-4 grid-cols-1 place-items-center lg:px-[200px]  gap-5">
+          <div className="grid lg:grid-cols-4 grid-cols-1 place-items-center lg:px-[150px]  gap-5">
             {content}
           </div>
           <div className="flex flex-col justify-center  items-center py-10">

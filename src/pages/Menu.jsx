@@ -65,7 +65,7 @@ const Menu = () => {
             </p>
           ))}
         </div>
-        <div className="grid lg:grid-cols-4 grid-cols-1 place-items-center lg:px-[200px] lg:py-[100px] py-20 gap-5">
+        <div className="grid lg:grid-cols-4 grid-cols-1 place-items-center lg:px-[180px] lg:py-[100px] py-20 gap-5">
           {content}
         </div>
       </div>
