@@ -45,10 +45,10 @@ const Footer = () => {
           <p className="font-bold">Subscribe to our restaurant</p>
           <input
             type="email"
-            className="py-2 border px-2 w-[300px]"
+            className="py-2 border px-2 w-[300px] dark:bg-[#0a0c1c]"
             placeholder="email"
           />
-          <button className="bg-orange-400 px-5 py-2 rounded-r text-white">
+          <button className="bg-gradient-to-r from-orange-500 to-orange-300 px-5 py-2 rounded-r text-white">
             Subscribe
           </button>
         </div>

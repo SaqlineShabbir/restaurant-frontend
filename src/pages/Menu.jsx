@@ -56,7 +56,7 @@ const Menu = () => {
           {categories.map((category) => (
             <p
               key={category}
-              className={`bg-orange-500 py-1 px-5 rounded text-white cursor-pointer ${
+              className={`bg-gradient-to-r from-orange-500 to-orange-300 py-1 px-5 rounded text-white cursor-pointer ${
                 selectedCategory === category ? "active:ring-1" : ""
               }`}
               onClick={() => handleCategoryClick(category)}
@@ -65,7 +65,7 @@ const Menu = () => {
             </p>
           ))}
         </div>
-        <div className="grid lg:grid-cols-3 grid-cols-1 place-items-center lg:px-[250px] lg:py-[100px] py-20 gap-5">
+        <div className="grid lg:grid-cols-4 grid-cols-1 place-items-center lg:px-[200px] lg:py-[100px] py-20 gap-5">
           {content}
         </div>
       </div>

@@ -26,13 +26,13 @@ const chefs = [
 
 const ChefCard = () => {
   return (
-    <section className="py-16 dark:bg-[#0a0c1c] lg:px-[200px]">
+    <section className="py-16 dark:bg-[#0a0c1c] lg:px-[200px] ">
       <div className="container mx-auto">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h3 className="text-orange-500 text-lg font-bold uppercase mb-2 inline-flex items-center">
-            <LuChefHat color="white" className="text-2xl pr-2" />
-            <span className="mr-2">Our Chef</span>{" "}
+          <h3 className=" text-lg font-bold uppercase mb-2 inline-flex items-center">
+            <LuChefHat className="text-2xl pr-2 dark:text-gray-100" />
+            <span className="mr-2 text-orange-500">Our Chef</span>{" "}
             {/* Spacing between text and icon */}
             {/* Adjust icon size here */}
           </h3>
@@ -46,7 +46,7 @@ const ChefCard = () => {
           {chefs.map((chef, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg relative overflow-hidden p-6 border"
+              className="bg-white dark:bg-[#0a0c1c96]  rounded-lg relative overflow-hidden p-6 border"
             >
               {/* Image Wrapper */}
               <div className="relative">
@@ -82,10 +82,12 @@ const ChefCard = () => {
               </div>
 
               {/* Chef Info */}
-              <h3 className="text-center text-xl font-bold mt-10">
+              <h3 className="text-center dark:text-gray-50 text-xl font-bold mt-10">
                 {chef.name}
               </h3>
-              <p className="text-center text-gray-500">{chef.title}</p>
+              <p className="text-center dark:text-gray-50 text-gray-500">
+                {chef.title}
+              </p>
             </div>
           ))}
         </div>

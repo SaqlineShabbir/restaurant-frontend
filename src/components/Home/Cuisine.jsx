@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import imgg from "../../assets/food-photos/food2.jpg";
 const CuisineSection = () => {
   return (
-    <section className="relative bg-white lg:py-[100px] dark:bg-[#0a0c1c] ">
+    <section className="relative bg-white lg:py-[100px] dark:bg-[#0a0c1c] px-5  lg:px-0">
       <div className=" flex flex-col lg:flex-row items-center justify-between">
         {/* Left Image */}
         <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
@@ -32,7 +32,7 @@ const CuisineSection = () => {
             the readable content of a page when looking at layout the point
             established fact.
           </p>
-          <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-6  rounded-full">
+          <button className="bg-gradient-to-r from-orange-500 to-orange-300 hover:bg-orange-700 text-white font-bold py-2 px-6 ">
             <Link to="/menu">
               Order Now <span className="ml-2">➡️</span>
             </Link>

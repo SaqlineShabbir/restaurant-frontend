@@ -3,7 +3,7 @@ import { MdFavorite } from "react-icons/md";
 import phoneImg from "../../assets/svg/mobile-removebg.png";
 const WhyChooseUs = () => {
   return (
-    <div className="main dark:bg-[#0a0c1c] dark:text-gray-100  lg:px-[200px] pt-20">
+    <div className="main dark:bg-[#0a0c1c] dark:text-gray-100  lg:px-[200px] pt-10">
       <div className="text-center">
         <div className="flex items-center justify-center">
           <MdFavorite className="mr-2" />{" "}
